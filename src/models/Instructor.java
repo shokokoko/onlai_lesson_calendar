@@ -14,11 +14,11 @@ import javax.persistence.Table;
 @Table(name = "instructor")
 @NamedQueries({
     @NamedQuery(
-            name = "getAllInstructor",
+            name = "getAllInstructors",
             query = "SELECT i FROM Instructor AS i ORDER BY i.id DESC"
             ),
     @NamedQuery(
-            name = "getInstructorCount",
+            name = "getInstructorsCount",
             query = "SELECT COUNT(i) FROM Instructor AS i"
             ),
     @NamedQuery(
@@ -43,8 +43,8 @@ public class Instructor {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "Tname", nullable = false)
-    private String Tname;
+    @Column(name = "tname", nullable = false)
+    private String tname;
 
     @Column(name = "password", length = 64, nullable = false)
     private String password;
@@ -92,13 +92,12 @@ public class Instructor {
     }
 
     public String getTname() {
-        return Tname;
+        return tname;
     }
 
-    public void setTname(String Tname) {
-        this.Tname = Tname;
+    public void setTname(String tname) {
+        this.tname = tname;
     }
-
 
     public String getPassword() {
         return password;

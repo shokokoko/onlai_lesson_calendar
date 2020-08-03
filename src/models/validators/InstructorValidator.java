@@ -22,9 +22,9 @@ public class InstructorValidator {
             errors.add(name_error);
         }
 
-        String Tname_error = _validateTname(i.getTname());
-        if(!Tname_error.equals("")) {
-            errors.add(Tname_error);
+        String tname_error = _validateTname(i.getTname());
+        if(!tname_error.equals("")) {
+            errors.add(tname_error);
         }
 
         String password_error = _validatePassword(i.getPassword(), password_check_flag);
@@ -77,8 +77,8 @@ public class InstructorValidator {
     }
 
  // ティーチャー名の必須入力チェック
-    private static String _validateTname(String Tname) {
-        if(Tname == null || Tname.equals("")) {
+    private static String _validateTname(String tname) {
+        if(tname == null || tname.equals("")) {
             return "ティーチャー名を入力してください。";
         }
 
