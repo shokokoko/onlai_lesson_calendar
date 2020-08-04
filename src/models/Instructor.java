@@ -119,6 +119,10 @@ public class Instructor {
         return officialHP;
     }
 
+    public void setOfficialHP(String officialHP) {
+        this.officialHP = officialHP;
+    }
+
     public Integer getAdmin_flag() {
         return admin_flag;
     }
