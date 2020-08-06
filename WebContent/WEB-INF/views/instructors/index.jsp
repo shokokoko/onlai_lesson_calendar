@@ -19,7 +19,16 @@
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${instructor.tname}" /></td>
                         <td><c:out value="${instructor.officialHP}" /></td>
-                        <td><a href="<c:url value='/instructors/show?id=${instructor.id}' />">詳細を表示</a></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${instructor.delete_flag == 1}">
+                                    （削除済み）
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/instructors/show?id=${instructor.id}' />">詳細を表示</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
