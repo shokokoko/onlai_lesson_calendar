@@ -133,3 +133,21 @@ select {
 h1 a {
     color: #eeeeee;
 }
+
+table#lesson_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#lesson_list .lesson_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+
+table#lesson_list .lesson_title {
+    width: 37%;
+}
+
+table#lesson_list .lesson_action {
+    width: 13%;
+}
