@@ -3,6 +3,7 @@
 	<persistence-unit name="onlai_lesson_calendar" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>models.Instructor</class>
+		<class>models.Lesson</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/onlai_lesson_calendar?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>

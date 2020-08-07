@@ -4,14 +4,29 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>onlai_lesson_calendar</title>
+        <title>onlai レッスン カレンダー</title>
         <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
         <link rel="stylesheet" href="<c:url value='/css/style.css' />">
     </head>
     <body>
         <div id="wrapper">
             <div id="header">
-                <h1>onlai レッスン カレンダー</h1>
+                <div id="header_menu">
+                    <h1><a href="<c:url value='/' />">onlai レッスン カレンダー</a></h1>&nbsp;&nbsp;&nbsp;
+                    <c:if test="${sessionScope.login_instructor != null}">
+                        <c:if test="${sessionScope.login_instructor.admin_flag == 1}">
+                            <a href="<c:url value='/instructors/index' />">インストラクター管理</a>&nbsp;
+                        </c:if>
+                        <a href="<c:url value='/lessons/index' />">レッスン管理</a>&nbsp;
+                        <a href="<c:url value='/calendars/index' />">カレンダー管理</a>&nbsp;
+                    </c:if>
+                </div>
+                <c:if test="${sessionScope.login_instructor != null}">
+                    <div id="instructor_tname">
+                        <c:out value="${sessionScope.login_instructor.tname}" />&nbsp;先生&nbsp;&nbsp;&nbsp;
+                        <a href="<c:url value='/logout' />">ログアウト</a>
+                    </div>
+                </c:if>
             </div>
             <div id="content">
                 ${param.content}
