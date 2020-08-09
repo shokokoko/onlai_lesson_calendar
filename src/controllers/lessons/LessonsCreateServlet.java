@@ -46,6 +46,7 @@ public class LessonsCreateServlet extends HttpServlet {
 
             l.setTitle(request.getParameter("title"));
             l.setContent(request.getParameter("content"));
+            l.setTarget(request.getParameter("target"));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             l.setCreated_at(currentTime);

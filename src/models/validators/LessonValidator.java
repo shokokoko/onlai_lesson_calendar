@@ -19,6 +19,11 @@ public class LessonValidator {
             errors.add(content_error);
         }
 
+        String target_error = _validateTarget(l.getTarget());
+        if(!content_error.equals("")) {
+            errors.add(content_error);
+        }
+
         return errors;
     }
 

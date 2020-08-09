@@ -23,7 +23,16 @@
 <br /><br />
 
 <label for="target">対象者</label><br />
-<textarea name="target" rows="10" cols="50">${lesson.target}</textarea>
+<select name="target">
+<option value="未選択">未選択</option>
+<option value="はじめて先生のレッスンにご参加の方">はじめて先生のレッスンにご参加の方</option>
+<option value="このレッスンを受けたことがある方">このレッスンを受けたことがある方</option>
+<option value="経験者全般">経験者全般</option>
+<option value="初心者">初心者</option>
+<option value="中級者">中級者</option>
+<option value="上級者">上級者</option>
+<option value="どなたでも">どなたでも</option>
+</select>
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

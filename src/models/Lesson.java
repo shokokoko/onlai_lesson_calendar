@@ -60,7 +60,7 @@ public class Lesson {
         this.id = id;
     }
 
-    public Instructor getEmployee() {
+    public Instructor getInstructor() {
         return instructor;
     }
 

@@ -13,10 +13,10 @@
             <tbody>
                 <tr>
                     <th class="lesson_title">タイトル</th>
-                    <th class="lesson_target">タイトル</th>
+                    <th class="lesson_target">対象者</th>
                     <th class="lesson_action">詳細</th>
                 </tr>
-                <c:forEach var="lesson" items="${lesson}" varStatus="status">
+                <c:forEach var="lesson" items="${lessons}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="lesson_title">${lesson.title}</td>
                         <td class="lesson_target">${lesson.target}</td>
@@ -28,7 +28,7 @@
 
         <div id="pagination">
             （全 ${lessons_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((lessons_count - 1) / 15) + 1}" step="1">
+            <c:forEach var="i" begin="1" end="${((lessons_count - 1) / 10) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;

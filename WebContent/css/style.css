@@ -145,9 +145,9 @@ table#lesson_list .lesson_name {
 }
 
 table#lesson_list .lesson_title {
-    width: 37%;
+    width: 30%;
 }
 
 table#lesson_list .lesson_action {
-    width: 13%;
+    width: 30%;
 }
