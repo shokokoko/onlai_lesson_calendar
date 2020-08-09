@@ -151,3 +151,7 @@ table#lesson_list .lesson_title {
 table#lesson_list .lesson_action {
     width: 30%;
 }
+
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}
