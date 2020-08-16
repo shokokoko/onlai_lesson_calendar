@@ -24,14 +24,14 @@
 
 <label for="target">対象者</label><br />
 <select name="target">
-<option value="未選択">未選択</option>
-<option value="はじめて先生のレッスンにご参加の方">はじめて先生のレッスンにご参加の方</option>
-<option value="このレッスンを受けたことがある方">このレッスンを受けたことがある方</option>
-<option value="経験者全般">経験者全般</option>
-<option value="初心者">初心者</option>
-<option value="中級者">中級者</option>
-<option value="上級者">上級者</option>
-<option value="どなたでも">どなたでも</option>
+<option value="0">未選択</option>
+<option value="1">はじめて先生のレッスンにご参加の方</option>
+<option value="2">先生のレッスンを受けたことがある方</option>
+<option value="3">経験者全般</option>
+<option value="4">初心者</option>
+<option value="5">中級者</option>
+<option value="6">上級者</option>
+<option value="7">どなたでも</option>
 </select>
 <br /><br />
 

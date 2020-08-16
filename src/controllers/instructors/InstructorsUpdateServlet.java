@@ -76,8 +76,9 @@ public class InstructorsUpdateServlet extends HttpServlet {
 
             i.setName(request.getParameter("tname"));
 
+            String password2 = request.getParameter("password2");
 
-            List<String> errors = InstructorValidator.validate(i, code_duplicate_check, password_check_flag);
+            List<String> errors = InstructorValidator.validate(i, code_duplicate_check, password_check_flag, password2);
             if(errors.size() > 0) {
                 em.close();
 

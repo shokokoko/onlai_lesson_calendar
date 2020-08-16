@@ -9,7 +9,7 @@
 
     </div>
 </c:if>
-<label for="code">ユーザー名</label><br />
+<label for="code">ユーザー名 ※ログイン時に使用します</label><br />
 <input type="text" name="code" value="${instructor.code}" />
 <br /><br />
 
@@ -21,8 +21,12 @@
 <input type="text" name="tname" value="${instructor.tname}" />
 <br /><br />
 
-<label for="password">パスワード</label><br />
-<input type="password" name="password" />
+<label for="password1">パスワード ※ログイン時に使用します</label><br />
+<input type="password" name="password1" />
+<br /><br />
+
+<label for="password2">確認パスワード</label><br />
+<input type="password" name="password2" />
 <br /><br />
 
 <label for="mailAdress">メールアドレス</label><br />

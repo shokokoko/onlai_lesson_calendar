@@ -9,7 +9,7 @@ import models.Instructor;
 import utils.DBUtil;
 
 public class InstructorValidator {
-    public static List<String> validate(Instructor i, Boolean code_duplicate_check_flag, Boolean password_check_flag) {
+    public static List<String> validate(Instructor i, Boolean code_duplicate_check_flag, Boolean password_check_flag, String password2) {
         List<String> errors = new ArrayList<String>();
 
         String code_error = _validateCode(i.getCode(), code_duplicate_check_flag);
@@ -27,9 +27,9 @@ public class InstructorValidator {
             errors.add(tname_error);
         }
 
-        String password_error = _validatePassword(i.getPassword(), password_check_flag);
-        if(!password_error.equals("")) {
-            errors.add(password_error);
+        String password1_error = _validatePassword(i.getPassword(), password_check_flag, password2);
+        if(!password1_error.equals("")) {
+            errors.add(password1_error);
         }
 
         String mailAdress_error = _validateMailAdress(i.getMailAdress());
@@ -86,13 +86,27 @@ public class InstructorValidator {
     }
 
     // パスワードの必須入力チェック
-    private static String _validatePassword(String password, Boolean password_check_flag) {
-        // パスワードを変更する場合のみ実行
-        if(password_check_flag && (password == null || password.equals(""))) {
-            return "パスワードを入力してください。";
+    private static String _validatePassword(String password, Boolean password_check_flag, String password2) {
+        String msg = null;
+        System.out.println(password);
+        System.out.println(password2);
+        if(password_check_flag) {
+            if(( password == null || password.equals(""))  && (password2 == null || password2.equals(""))) {
+                msg = "パスワードと確認パスワードを入力してください。";
+            } else if (password == null || password.equals("")) {
+                msg = "パスワードを入力してください。";
+            } else if (password2 == null || password2.equals("")) {
+                msg = "確認パスワードを入力してください。";
+            } else if(!password.equals(password2)) {
+                msg = "パスワードと確認パスワードは同じ値を入力してください。";
+            } else {
+                msg = "";
+            }
+        } else {
+           msg = "";
         }
-        return "";
-    }
+        return msg;
+ }
 
     // メールアドレスの必須入力チェック
     private static String _validateMailAdress(String mailAdress) {

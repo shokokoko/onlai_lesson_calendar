@@ -14,27 +14,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "lessons")
+@Table(name = "profiles")
 @NamedQueries({
     @NamedQuery(
-            name = "getAllLessons",
-            query = "SELECT l FROM Lesson AS l ORDER BY l.id DESC"
+            name = "getAllProfiles",
+            query = "SELECT p FROM Profile AS p ORDER BY p.id DESC"
             ),
     @NamedQuery(
-            name = "getLessonsCount",
-            query = "SELECT COUNT(l) FROM Lesson AS l"
+            name = "getProfilesCount",
+            query = "SELECT COUNT(p) FROM Profile AS p"
             ),
-    @NamedQuery(
-            name = "getMyAllLessons",
-            query = "SELECT l FROM Lesson AS l WHERE l.instructor = :instructor ORDER BY l.id DESC"
-            ),
-    @NamedQuery(
-            name = "getMyLessonsCount",
-            query = "SELECT COUNT(l) FROM Lesson AS l WHERE l.instructor = :instructor"
-            )
 })
 @Entity
-public class Lesson {
+public class Profile {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,15 +36,29 @@ public class Lesson {
     @JoinColumn(name = "instructor_id", nullable = false)
     private Instructor instructor;
 
-    @Column(name = "title", length = 255, nullable = false)
-    private String title;
+    //@Column(name = "thumbnail", nullable = false)
+    //private String thumbnail;
 
     @Lob
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "target", nullable = false)
-    private String target;
+    @Column(name = "mainprogram", length = 255, nullable = false)
+    private String mainprogram;
+
+    @Column(name = "language", length = 255, nullable = false)
+    private String language;
+
+    @Lob
+    @Column(name = "qualifications", nullable = false)
+    private String qualifications;
+
+  //@Column(name = "photo", nullable = false)
+    //private String photo;
+
+    @Lob
+    @Column(name = "SNSaccount", nullable = false)
+    private String SNSaccount;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -76,13 +82,13 @@ public class Lesson {
         this.instructor = instructor;
     }
 
-    public String getTitle() {
-        return title;
+    /* public String getTitle() {
+        return thumbnail;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    } */
 
     public String getContent() {
         return content;
@@ -92,12 +98,44 @@ public class Lesson {
         this.content = content;
     }
 
-    public String getTarget() {
-        return target;
+    public String getMainprogram() {
+        return mainprogram;
     }
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setMainprogram(String mainprogram) {
+        this.mainprogram = mainprogram;
+    }
+
+    public String getLanguage() {
+        return language ;
+    }
+
+    public void setLanguage (String language) {
+        this.language = language;
+    }
+
+    public String getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    /* public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    } */
+
+    public String getSNSaccount() {
+        return SNSaccount;
+    }
+
+    public void setSNSaccount(String SNSaccount) {
+        this.SNSaccount = SNSaccount;
     }
 
     public Timestamp getCreated_at() {

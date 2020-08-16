@@ -47,7 +47,7 @@ public class InstructorsCreateServlet extends HttpServlet {
             i.setTname(request.getParameter("tname"));
             i.setPassword(
                     EncryptUtil.getPasswordEncrypt(
-                            request.getParameter("password"),
+                            request.getParameter("password1"),
                             (String)this.getServletContext().getAttribute("salt")
                             )
                     );
@@ -60,7 +60,9 @@ public class InstructorsCreateServlet extends HttpServlet {
             i.setUpdated_at(currentTime);
             i.setDelete_flag(0);
 
-            List<String> errors = InstructorValidator.validate(i, true, true);
+            List<String> errors = InstructorValidator.validate(i, true, true, EncryptUtil.getPasswordEncrypt(request.getParameter("password2"),
+                    (String)this.getServletContext().getAttribute("salt")));
+
             if(errors.size() > 0) {
                 em.close();
 

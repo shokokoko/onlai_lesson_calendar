@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Instructor;
 import models.Lesson;
 import utils.DBUtil;
 
@@ -35,19 +36,38 @@ public class LessonsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        List<Lesson> lessons = null;
+        long lessons_count = 0;
+
+        Instructor login_instructor = (Instructor)request.getSession().getAttribute("login_instructor");
+
         int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(Exception i) {
             page = 1;
         }
-        List<Lesson> lessons = em.createNamedQuery("getAllLessons", Lesson.class)
-                                  .setFirstResult(10 * (page - 1))
-                                  .setMaxResults(10)
-                                  .getResultList();
 
-        long lessons_count = (long)em.createNamedQuery("getLessonsCount", Long.class)
-                                     .getSingleResult();
+        if(login_instructor.getAdmin_flag() == 1){
+            lessons = em.createNamedQuery("getAllLessons", Lesson.class)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
+
+            lessons_count = (long)em.createNamedQuery("getLessonsCount", Long.class)
+                       .getSingleResult();
+
+        }else if(login_instructor.getAdmin_flag() == 0) {
+            lessons = em.createNamedQuery("getMyAllLessons", Lesson.class)
+                    .setParameter("instructor", login_instructor)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
+
+            lessons_count = (long)em.createNamedQuery("getMyLessonsCount", Long.class)
+                       .setParameter("instructor", login_instructor)
+                       .getSingleResult();
+        }
 
         em.close();
 
