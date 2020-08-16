@@ -43,7 +43,7 @@ public class ProfileValidator {
 
     private static String _validateContent(String content) {
         if(content == null || content.equals("")) {
-            return "プロフィール詳細を入力してください。";
+            return "プロフィール紹介を入力してください。";
             }
 
         return "";

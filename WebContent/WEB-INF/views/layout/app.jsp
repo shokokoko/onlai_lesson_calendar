@@ -19,7 +19,7 @@
                         </c:if>
                         <a href="<c:url value='/lessons/index' />">レッスン管理</a>&nbsp;
                         <a href="<c:url value='/calendars/index' />">カレンダー管理</a>&nbsp;
-                        <a href="<c:url value='/lessons/index' />">プロフィール管理</a>&nbsp;
+                        <a href="<c:url value='/profiles/index' />">プロフィール管理</a>&nbsp;
                     </c:if>
                 </div>
                 <c:if test="${sessionScope.login_instructor != null}">
