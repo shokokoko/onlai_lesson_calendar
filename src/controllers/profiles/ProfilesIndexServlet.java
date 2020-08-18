@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Instructor;
 import models.Profile;
 import utils.DBUtil;
 
@@ -35,19 +36,38 @@ public class ProfilesIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        List<Profile> profiles = null;
+        long profiles_count = 0;
+
+        Instructor login_instructor = (Instructor)request.getSession().getAttribute("login_instructor");
+
         int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(Exception i) {
             page = 1;
         }
-        List<Profile> profiles = em.createNamedQuery("getAllProfiles", Profile.class)
-                                  .setFirstResult(10 * (page - 1))
-                                  .setMaxResults(10)
-                                  .getResultList();
 
-        long profiles_count = (long)em.createNamedQuery("getProfilesCount", Long.class)
-                                     .getSingleResult();
+        if(login_instructor.getAdmin_flag() == 1){
+            profiles = em.createNamedQuery("getAllProfiles", Profile.class)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
+
+            profiles_count = (long)em.createNamedQuery("getProfilesCount", Long.class)
+                       .getSingleResult();
+
+        }else if(login_instructor.getAdmin_flag() == 0) {
+            profiles = em.createNamedQuery("getMyAllProfiles", Profile.class)
+                    .setParameter("instructor", login_instructor)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
+
+            profiles_count = (long)em.createNamedQuery("getMyProfilesCount", Long.class)
+                       .setParameter("instructor", login_instructor)
+                       .getSingleResult();
+        }
 
         em.close();
 

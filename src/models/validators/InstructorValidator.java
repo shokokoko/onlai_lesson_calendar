@@ -88,10 +88,8 @@ public class InstructorValidator {
     // パスワードの必須入力チェック
     private static String _validatePassword(String password, Boolean password_check_flag, String password2) {
         String msg = null;
-        System.out.println(password);
-        System.out.println(password2);
         if(password_check_flag) {
-            if(( password == null || password.equals(""))  && (password2 == null || password2.equals(""))) {
+            if( (password == null || password.equals("")) && (password2 == null || password2.equals("")) ) {
                 msg = "パスワードと確認パスワードを入力してください。";
             } else if (password == null || password.equals("")) {
                 msg = "パスワードを入力してください。";
@@ -103,10 +101,10 @@ public class InstructorValidator {
                 msg = "";
             }
         } else {
-           msg = "";
+            msg = "";
         }
         return msg;
- }
+    }
 
     // メールアドレスの必須入力チェック
     private static String _validateMailAdress(String mailAdress) {

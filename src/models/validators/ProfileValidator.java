@@ -29,6 +29,16 @@ public class ProfileValidator {
             errors.add(language_error);
         }
 
+        String qualifications_error = _validateQualifications(p.getQualifications());
+        if(!qualifications_error.equals("")) {
+            errors.add(qualifications_error);
+        }
+
+        String snsblog_error = _validateSnsblog(p.getSnsblog());
+        if(!snsblog_error.equals("")) {
+            errors.add(snsblog_error);
+        }
+
         return errors;
     }
 
@@ -60,6 +70,22 @@ public class ProfileValidator {
     private static String _validateLanguage(String language) {
         if(language == null || language.equals("")) {
             return "対応言語を入力してください。";
+            }
+
+        return "";
+    }
+
+    private static String _validateQualifications(String qualifications) {
+        if(qualifications == null || qualifications.equals("")) {
+            return "保有資格を入力してください。";
+            }
+
+        return "";
+    }
+
+    private static String _validateSnsblog(String snsblog) {
+        if(snsblog == null || snsblog.equals("")) {
+            return "SNSアカウント・ブログ等を入力してください。";
             }
 
         return "";

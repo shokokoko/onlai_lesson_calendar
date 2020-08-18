@@ -24,6 +24,15 @@ import javax.persistence.Table;
             name = "getProfilesCount",
             query = "SELECT COUNT(p) FROM Profile AS p"
             ),
+    @NamedQuery(
+            name = "getMyAllProfiles",
+            query = "SELECT p FROM Profile AS p WHERE p.instructor = :instructor ORDER BY p.id DESC"
+            ),
+    @NamedQuery(
+            name = "getMyProfilesCount",
+            query = "SELECT COUNT(p) FROM Profile AS p WHERE p.instructor = :instructor"
+            ),
+
 })
 @Entity
 public class Profile {
@@ -57,8 +66,8 @@ public class Profile {
     //private String photo;
 
     @Lob
-    @Column(name = "SNSaccount", nullable = false)
-    private String SNSaccount;
+    @Column(name = "snsblog", nullable = false)
+    private String snsblog;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -130,12 +139,12 @@ public class Profile {
         this.photo = photo;
     } */
 
-    public String getSNSaccount() {
-        return SNSaccount;
+    public String getSnsblog() {
+        return snsblog;
     }
 
-    public void setSNSaccount(String SNSaccount) {
-        this.SNSaccount = SNSaccount;
+    public void setSnsblog(String snsblog) {
+        this.snsblog = snsblog;
     }
 
     public Timestamp getCreated_at() {

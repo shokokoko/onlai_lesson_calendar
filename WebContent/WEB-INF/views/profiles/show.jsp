@@ -43,19 +43,19 @@
                         <tr>
                             <th>SNSアカウント・ブログ等</th>
                             <td>
-                                <pre><c:out value="${profile.qualifications}" /></pre>
+                                <pre><c:out value="${profile.snsblog}" /></pre>
                             </td>
                         </tr>
                         <tr>
                             <th>登録日時</th>
                             <td>
-                                <fmt:formatDate value="${report.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${profile.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />
                             </td>
                         </tr>
                         <tr>
                             <th>更新日時</th>
                             <td>
-                                <fmt:formatDate value="${report.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${profile.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" />
                             </td>
                         </tr>
                     </tbody>

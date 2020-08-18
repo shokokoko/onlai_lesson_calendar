@@ -1,4 +1,4 @@
-package controllers.lessons;
+package controllers.profiles;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -13,21 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Instructor;
-import models.Lesson;
-import models.validators.LessonValidator;
+import models.Profile;
+import models.validators.ProfileValidator;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class LessonsCreateServlet
+ * Servlet implementation class ProfilesCreateServlet
  */
-@WebServlet("/lessons/create")
-public class LessonsCreateServlet extends HttpServlet {
+@WebServlet("/profiles/create")
+public class ProfilesCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LessonsCreateServlet() {
+    public ProfilesCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,36 +40,38 @@ public class LessonsCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Lesson l = new Lesson();
+            Profile p = new Profile();
 
-            l.setInstructor((Instructor)request.getSession().getAttribute("login_instructor"));
+            p.setInstructor((Instructor)request.getSession().getAttribute("login_instructor"));
 
-            l.setTitle(request.getParameter("title"));
-            l.setContent(request.getParameter("content"));
-            l.setTarget(request.getParameter("target"));
+            p.setContent(request.getParameter("content"));
+            p.setMainprogram(request.getParameter("mainprogram"));
+            p.setLanguage(request.getParameter("language"));
+            p.setQualifications(request.getParameter("qualifications"));
+            p.setSnsblog(request.getParameter("snsblog"));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            l.setCreated_at(currentTime);
-            l.setUpdated_at(currentTime);
+            p.setCreated_at(currentTime);
+            p.setUpdated_at(currentTime);
 
-            List<String> errors = LessonValidator.validate(l);
+            List<String> errors = ProfileValidator.validate(p);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("lesson", l);
+                request.setAttribute("profile", p);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/lessons/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/profiles/new.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
-                em.persist(l);
+                em.persist(p);
                 em.getTransaction().commit();
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/lessons/index");
+                response.sendRedirect(request.getContextPath() + "/profiles/index");
             }
         }
     }

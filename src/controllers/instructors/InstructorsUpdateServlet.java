@@ -2,6 +2,7 @@ package controllers.instructors;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Instructor;
-import models.validators.InstructorValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
@@ -54,17 +54,27 @@ public class InstructorsUpdateServlet extends HttpServlet {
             // パスワード欄に入力があったら
             // パスワードの入力値チェックを行う指定をする
             Boolean password_check_flag = true;
-            String password = request.getParameter("password");
-            if(password == null || password.equals("")) {
+            String password = request.getParameter("password1");
+            String password2 = request.getParameter("password2");
+            String msg = null;
+            if( (password == null || password.equals("")) && (password2 == null || password2.equals("")) ) {
                 password_check_flag = false;
-            } else {
-                i.setPassword(
-                        EncryptUtil.getPasswordEncrypt(
-                                password,
-                                (String)this.getServletContext().getAttribute("salt")
-                                )
-                        );
             }
+            if(password_check_flag){
+              if(password2 == null || password2.equals("")){
+                msg = "確認パスワードを入力してください。";
+              }else if(password == null || password.equals("")){
+                msg = "パスワードを入力してください。";
+              }else if(!password.equals(password2)){
+                msg = "パスワードと確認パスワードは同じ値を入力してください。";
+              }else {
+                  i.setPassword(
+                          EncryptUtil.getPasswordEncrypt(
+                                  password,
+                                  (String)this.getServletContext().getAttribute("salt")
+                                  )
+                          );
+              }
 
             i.setName(request.getParameter("name"));
             i.setTname(request.getParameter("tname"));
@@ -76,9 +86,11 @@ public class InstructorsUpdateServlet extends HttpServlet {
 
             i.setName(request.getParameter("tname"));
 
-            String password2 = request.getParameter("password2");
 
-            List<String> errors = InstructorValidator.validate(i, code_duplicate_check, password_check_flag, password2);
+            List<String> errors = new ArrayList<String>();
+            if(msg != null) {
+                errors.add(msg);
+            }
             if(errors.size() > 0) {
                 em.close();
 
@@ -100,5 +112,5 @@ public class InstructorsUpdateServlet extends HttpServlet {
             }
         }
     }
-
+    }
 }
