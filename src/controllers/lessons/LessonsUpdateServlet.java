@@ -41,9 +41,21 @@ public class LessonsUpdateServlet extends HttpServlet {
 
             Lesson l = em.find(Lesson.class, (Integer)(request.getSession().getAttribute("lesson_id")));
 
+            l.setThumbnail(request.getParameter("thumbnail"));
             l.setTitle(request.getParameter("title"));
             l.setContent(request.getParameter("content"));
+            l.setRequired_time(Integer.parseInt(request.getParameter("required_time")));
+            l.setApplication(request.getParameter("application"));
+
+            if( request.getParameter("charge") != null && !(request.getParameter("charge").equals("")) ) {
+                l.setCharge(Integer.parseInt(request.getParameter("charge")));
+            }
+
             l.setTarget(request.getParameter("target"));
+            l.setNotes(request.getParameter("notes"));
+            l.setDetail(request.getParameter("detail"));
+            l.setImage(request.getParameter("image"));
+
             l.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             List<String> errors = LessonValidator.validate(l);

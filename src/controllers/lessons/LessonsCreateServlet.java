@@ -42,11 +42,23 @@ public class LessonsCreateServlet extends HttpServlet {
 
             Lesson l = new Lesson();
 
+
             l.setInstructor((Instructor)request.getSession().getAttribute("login_instructor"));
 
+            l.setThumbnail(request.getParameter("thumbnail"));
             l.setTitle(request.getParameter("title"));
             l.setContent(request.getParameter("content"));
+            l.setRequired_time(Integer.parseInt(request.getParameter("required_time")));
+            l.setApplication(request.getParameter("application"));
+
+            if( request.getParameter("charge") != null && !(request.getParameter("charge").equals("")) ) {
+                l.setCharge(Integer.parseInt(request.getParameter("charge")));
+            }
+
             l.setTarget(request.getParameter("target"));
+            l.setNotes(request.getParameter("notes"));
+            l.setDetail(request.getParameter("detail"));
+            l.setImage(request.getParameter("image"));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             l.setCreated_at(currentTime);

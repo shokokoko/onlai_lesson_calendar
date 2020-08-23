@@ -13,13 +13,15 @@
             <tbody>
                 <tr>
                     <th class="lesson_title">タイトル</th>
-                    <th class="lesson_target">対象者</th>
-                    <th class="lesson_action">詳細</th>
+                    <th class="lesson_content">レッスンの内容</th>
+                    <th class="lesson_detail">予約先・詳細</th>
+                    <th class="lesson_action">内容確認</th>
                 </tr>
                 <c:forEach var="lesson" items="${lessons}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="lesson_title">${lesson.title}</td>
-                        <td class="lesson_target">${lesson.target}</td>
+                        <td class="lesson_content">${lesson.content}</td>
+                        <td class="lesson_detail">${lesson.detail}</td>
                         <td class="lesson_action"><a href="<c:url value='/lessons/show?id=${lesson.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

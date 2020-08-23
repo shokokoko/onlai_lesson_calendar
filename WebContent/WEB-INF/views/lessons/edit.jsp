@@ -5,6 +5,18 @@
         <c:choose>
             <c:when test="${lesson != null}">
                 <h2>レッスン　編集ページ</h2>
+                <br /><br />
+
+                <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
+                    <div>
+                        <input type="file" name="file">
+                    </div>
+                    <div>
+                        <input type="submit" value="アップロード">
+                    </div>
+                </form>
+                <br />
+
                 <form method="POST" action="<c:url value='/lessons/update' />">
                     <c:import url="_form.jsp" />
                 </form>

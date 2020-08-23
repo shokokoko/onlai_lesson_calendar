@@ -3,6 +3,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <h2>レッスン　新規登録ページ</h2>
+        <br /><br />
 
         <form method="POST" action="<c:url value='/lessons/create' />">
             <c:import url="_form.jsp" />

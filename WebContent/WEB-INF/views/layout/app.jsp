@@ -12,10 +12,10 @@
         <div id="wrapper">
             <div id="header">
                 <div id="header_menu">
-                    <h1><a href="<c:url value='/' />">onlai レッスン カレンダー</a></h1>&nbsp;&nbsp;&nbsp;
+                    <h1><a href="<c:url value='/' />">onlai レッスン カレンダー</a></h1>&nbsp;&nbsp;&nbsp; <br />
                     <c:if test="${sessionScope.login_instructor != null}">
                         <c:if test="${sessionScope.login_instructor.admin_flag == 1}">
-                            <a href="<c:url value='/instructors/index' />">INS管理</a>&nbsp;
+                            <a href="<c:url value='/instructors/index' />">インストラクター管理</a>&nbsp;
                         </c:if>
                         <a href="<c:url value='/lessons/index' />">レッスン管理</a>&nbsp;
                         <a href="<c:url value='/calendars/index' />">カレンダー管理</a>&nbsp;

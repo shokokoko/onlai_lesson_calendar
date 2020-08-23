@@ -10,8 +10,28 @@
                 <table>
                     <tbody>
                         <tr>
+                            <th>ID</th>
+                            <td><c:out value="${instructor.id}" /></td>
+                        </tr>
+                        <tr>
+                            <th>ユーザー名</th>
+                            <td><c:out value="${instructor.code}" /></td>
+                        </tr>
+                        <tr>
+                            <th>氏名</th>
+                            <td><c:out value="${instructor.name}" /></td>
+                        </tr>
+                        <tr>
                             <th>ティーチャー名</th>
                             <td><c:out value="${instructor.tname}" /></td>
+                        </tr>
+                        <tr>
+                            <th>お問い合わせ</th>
+                            <td><c:out value="${instructor.mailAdress}" /></td>
+                        </tr>
+                        <tr>
+                            <th>公式HPまたはSNSアカウント</th>
+                            <td><c:out value="${instructor.officialHP}" /></td>
                         </tr>
                         <tr>
                             <th>インストラクター</th>
@@ -21,14 +41,6 @@
                                     <c:otherwise>インストラクター</c:otherwise>
                                 </c:choose>
                             </td>
-                        </tr>
-                        <tr>
-                            <th>公式HPまたはSNSアカウント</th>
-                            <td><c:out value="${instructor.officialHP}" /></td>
-                        </tr>
-                        <tr>
-                            <th>お問い合わせ</th>
-                            <td><c:out value="${instructor.mailAdress}" /></td>
                         </tr>
                         <tr>
                             <th>登録日時</th>

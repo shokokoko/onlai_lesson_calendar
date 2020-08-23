@@ -9,11 +9,11 @@
 
     </div>
 </c:if>
-<label for="code">ユーザー名 ※ログイン時に使用します</label><br />
+<label for="code">ユーザー名　ログイン時に使用します(6桁以上の半角英数字)</label><br />
 <input type="text" name="code" value="${instructor.code}" />
 <br /><br />
 
-<label for="name">氏名</label><br />
+<label for="name">氏名　本名フルネームを入力してください※公開されません。</label><br />
 <input type="text" name="name" value="${instructor.name}" />
 <br /><br />
 
@@ -21,7 +21,7 @@
 <input type="text" name="tname" value="${instructor.tname}" />
 <br /><br />
 
-<label for="password1">パスワード ※ログイン時に使用します</label><br />
+<label for="password1">パスワード　ログイン時に使用します(8桁以上の半角英数字混在)</label><br />
 <input type="password" name="password1" />
 <br /><br />
 
@@ -29,7 +29,7 @@
 <input type="password" name="password2" />
 <br /><br />
 
-<label for="mailAdress">メールアドレス</label><br />
+<label for="mailAdress">メールアドレス　※公開されません。</label><br />
 <input type="text" name="mailAdress" value="${instructor.mailAdress}" />
 <br /><br />
 

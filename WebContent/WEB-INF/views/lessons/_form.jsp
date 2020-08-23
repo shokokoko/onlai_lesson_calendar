@@ -14,25 +14,45 @@
 <c:out value="${sessionScope.login_instructor.tname}" />
 <br /><br />
 
-<label for="title">タイトル</label><br />
+<label for="title">レッスンのタイトル</label><br />
 <input type="text" name="title" value="${lesson.title}" />
 <br /><br />
 
-<label for="content">内容</label><br />
+<label for="content">レッスンの内容</label><br />
 <textarea name="content" rows="10" cols="50">${lesson.content}</textarea>
+<br /><br />
+
+<label for="required_time">所要時間</label><br />
+<textarea name="required_time" rows="1" cols="50">${lesson.required_time}</textarea>
+<br /><br />
+
+<label for="application">使用アプリ</label><br />
+<textarea name="application" rows="1" cols="50">${lesson.application}</textarea>
+<br /><br />
+
+<label for="charge">レッスン料金</label><br />
+<textarea name="charge" rows="1" cols="50">${lesson.charge}</textarea>
 <br /><br />
 
 <label for="target">対象者</label><br />
 <select name="target">
 <option value="0">未選択</option>
-<option value="1">はじめて先生のレッスンにご参加の方</option>
-<option value="2">先生のレッスンを受けたことがある方</option>
+<option value="1">はじめてこの先生のレッスンにご参加の方</option>
+<option value="2">この先生のレッスンを受けたことがある方</option>
 <option value="3">経験者全般</option>
 <option value="4">初心者</option>
 <option value="5">中級者</option>
 <option value="6">上級者</option>
 <option value="7">どなたでも</option>
 </select>
+<br /><br />
+
+<label for="notes">その他・注意事項</label><br />
+<textarea name="notes" rows="3" cols="50">${lesson.notes}</textarea>
+<br /><br />
+
+<label for="detail">予約先・詳細</label><br />
+<textarea name="detail" rows="3" cols="50">${lesson.detail}</textarea>
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

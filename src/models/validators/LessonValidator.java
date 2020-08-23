@@ -19,9 +19,14 @@ public class LessonValidator {
             errors.add(content_error);
         }
 
-        String target_error = _validateTarget(l.getTarget());
-        if(!content_error.equals("")) {
-            errors.add(content_error);
+        String required_time_error = _validateRequired_time(l.getRequired_time());
+        if(!required_time_error.equals("")) {
+            errors.add(required_time_error);
+        }
+
+        String detail_error = _validateDetail(l.getDetail());
+        if(!detail_error.equals("")) {
+            errors.add(detail_error);
         }
 
         return errors;
@@ -43,9 +48,17 @@ public class LessonValidator {
         return "";
     }
 
-    private static String _validateTarget(String target) {
-        if(target == null || target.equals("")) {
-            return "対象者を入力してください。";
+    private static String _validateRequired_time(Integer required_time) {
+        if(required_time == null || required_time.equals("")) {
+            return "所要時間を入力してください。";
+            }
+
+        return "";
+    }
+
+    private static String _validateDetail(String detail) {
+        if(detail == null || detail.equals("")) {
+            return "予約先・詳細を入力してください。";
             }
 
         return "";

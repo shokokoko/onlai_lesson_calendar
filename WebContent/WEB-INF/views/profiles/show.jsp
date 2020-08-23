@@ -14,7 +14,7 @@
                     <tbody>
                         <tr>
                             <th>ティーチャー名</th>
-                            <td><c:out value="${profile.instructor.name}" /></td>
+                            <td><c:out value="${profile.instructor.tname}" /></td>
                         </tr>
                         <tr>
                             <th>プロフィール紹介</th>

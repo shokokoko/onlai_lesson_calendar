@@ -14,6 +14,10 @@
                             <td><c:out value="${lesson.instructor.tname}" /></td>
                         </tr>
                         <tr>
+                            <th>レッスンのメイン画像</th>
+                            <td><c:out value="${lesson.thumbnail}" /></td>
+                        </tr>
+                        <tr>
                             <th>タイトル</th>
                             <td>
                                 <pre><c:out value="${lesson.title}" /></pre>
@@ -26,11 +30,47 @@
                             </td>
                         </tr>
                         <tr>
+                            <th>所要時間</th>
+                            <td>
+                                <pre><c:out value="${lesson.required_time}" /></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>使用アプリ</th>
+                            <td>
+                                <pre><c:out value="${lesson.application}" /></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>レッスン料金</th>
+                            <td>
+                                <pre><c:out value="${lesson.charge}" /></pre>
+                            </td>
+                        </tr>
+                        <tr>
                             <th>対象者</th>
                             <td>
                                 <pre><c:out value="${lesson.target}" /></pre>
                             </td>
                         </tr>
+                        <tr>
+                            <th>その他・注意事項</th>
+                            <td>
+                                <pre><c:out value="${lesson.notes}" /></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>予約先・詳細</th>
+                            <td>
+                                <pre><c:out value="${lesson.detail}" /></pre>
+                            </td>
+                        </tr>
+                        <!--！！サムネがうまくいくまで未実装   <tr>
+                            <th>レッスンのイメージ写真</th>
+                            <td>
+                                <pre><c:out value="${lesson.image}" /></pre>
+                            </td>
+                        </tr> ここまで！！ -->
                         <tr>
                             <th>登録日時</th>
                             <td>
