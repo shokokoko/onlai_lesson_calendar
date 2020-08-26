@@ -41,8 +41,8 @@ public class LessonsUpdateServlet extends HttpServlet {
 
             Lesson l = em.find(Lesson.class, (Integer)(request.getSession().getAttribute("lesson_id")));
 
-            l.setThumbnail(request.getParameter("thumbnail"));
             l.setTitle(request.getParameter("title"));
+            l.setThumbnail(request.getParameter("thumbnail"));
             l.setContent(request.getParameter("content"));
             l.setRequired_time(Integer.parseInt(request.getParameter("required_time")));
             l.setApplication(request.getParameter("application"));

@@ -5,7 +5,7 @@
         <h2>レッスン　新規登録ページ</h2>
         <br /><br />
 
-        <form method="POST" action="<c:url value='/lessons/create' />">
+        <form method="POST" action="<c:url value='/lessons/create' />" enctype="multipart/form-data">
             <c:import url="_form.jsp" />
         </form>
 

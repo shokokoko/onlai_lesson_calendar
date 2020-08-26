@@ -7,19 +7,10 @@
                 <h2>レッスン　編集ページ</h2>
                 <br /><br />
 
-                <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
-                    <div>
-                        <input type="file" name="file">
-                    </div>
-                    <div>
-                        <input type="submit" value="アップロード">
-                    </div>
-                </form>
-                <br />
-
-                <form method="POST" action="<c:url value='/lessons/update' />">
+                <form method="POST" action="<c:url value='/lessons/update' />"enctype="multipart/form-data">
                     <c:import url="_form.jsp" />
                 </form>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

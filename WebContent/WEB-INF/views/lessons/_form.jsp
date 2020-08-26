@@ -7,12 +7,17 @@
         <c:forEach var="error" items="${errors}">
             ・<c:out value="${error}" /><br />
         </c:forEach>
-
     </div>
 </c:if>
+
 <label for="tname">ティーチャー名</label><br />
 <c:out value="${sessionScope.login_instructor.tname}" />
 <br /><br />
+
+<label for="thumbnail">メイン画像</label><br />
+<input type="file" name="file" value="${lesson.thumbnail}">
+<br /><br />
+
 
 <label for="title">レッスンのタイトル</label><br />
 <input type="text" name="title" value="${lesson.title}" />
